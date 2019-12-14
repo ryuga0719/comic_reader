@@ -54,7 +54,7 @@ class SERIES_ALL extends React.Component {
             className='modal-close-btn'
             onClick={() => this.handleClickClose()}
             >
-              <i class="material-icons back">arrow_back</i>
+              <i className="material-icons back">arrow_back</i>
               </button>
           </div>
           <SERIES />

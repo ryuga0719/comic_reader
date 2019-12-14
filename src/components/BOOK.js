@@ -1,4 +1,5 @@
 import React from 'react';
+import LazyLoad from 'react-lazyload';
 
 class BOOK extends React.Component {
   constructor(props) {
@@ -40,7 +41,9 @@ class BOOK extends React.Component {
           {this.state.data.imageData.map((Item) => {
               return (
                 <div className="book_inner">
-                  <img src={ Item.imageUrl } />
+                  <LazyLoad height="500" once>
+                    <img src={ Item.imageUrl } />
+                  </LazyLoad>
                 </div>
               );
             })}

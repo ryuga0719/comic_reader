@@ -42,13 +42,13 @@ class SERIES extends React.Component {
 		     <div className="modal_2">
             <div className="guide">
               <p>Scroll</p>
-              <i class="material-icons">arrow_downward</i>
+              <i className="material-icons">arrow_downward</i>
             </div>
             <button
           className='modal-close-btn abs'
           onClick={() => this.handleClickClose()}
             >
-              <i class="material-icons close">close</i>
+              <i className="material-icons close">close</i>
             </button>
             <BOOK />
 		     </div>
