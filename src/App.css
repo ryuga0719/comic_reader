@@ -4,12 +4,14 @@ img {
 
 .series_all_outer {
   width:100%;
+  padding:10px 0;
 
 }
 
 .series_all_inner {
-  border:1px solid red;
   position: relative;
+  padding:0 60px;
+  cursor: pointer;
 }
 
 .series_all_inner img {
@@ -24,9 +26,18 @@ img {
   cursor: pointer;
 }
 
-.DetailToBtn:hover {
-  background-color: rgba(100,100,100,0.3);
+.series_all_title {
+  font-size: 20px;
+  line-height: 1.2;
+  margin: 20px 0;
+  font-weight: bold;
 }
+
+.series_all_description {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
 
 .app_bar {
   width:100%;
@@ -271,4 +282,21 @@ img {
 .btn_div {
   width:100%;
   margin:15px 0;
+}
+
+.slick-prev,.slick-next {
+  z-index: 4 !important;
+}
+
+.slick-prev {
+  left:50px !important;
+}
+
+.slick-next {
+  right:50px !important;
+}
+
+.slick-prev::before,.slick-next::before {
+  font-size: 50px !important;
+  color:red !important;
 }

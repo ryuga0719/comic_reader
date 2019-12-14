@@ -46,9 +46,10 @@ class SERIES_ALL extends React.Component {
       className: "center",
       centerMode: true,
       infinite: true,
-      centerPadding: "60px",
+      centerPadding: "40px",
       slidesToShow: 3,
-      speed: 500
+      speed: 500 ,
+      dots:true ,
     };
 
     if(this.state.loading == false){
@@ -81,12 +82,10 @@ class SERIES_ALL extends React.Component {
           {this.state.data.data.map((Item) => {
               return (
 
-                <div className="series_all_inner">
-                  <div className="DetailToBtn"
-                 onClick={() => {this.handleClickOpen()}}
-                  ></div>
+                <div className="series_all_inner" onClick={() => {this.handleClickOpen()}}>
                   <img src={ Item.seriesImage } />
-                  <p>{Item.title}</p>
+                  <p className="series_all_title">{Item.title}</p>
+                  <p className="series_all_description">{Item.description}</p>
                 </div>
 
               );
