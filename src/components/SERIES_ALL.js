@@ -1,6 +1,9 @@
 import React from 'react';
 import SERIES from './SERIES';
 import AppBar from './AppBar';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 class SERIES_ALL extends React.Component {
   constructor(props) {
@@ -37,7 +40,17 @@ class SERIES_ALL extends React.Component {
   }
 
 
+
   render() {
+    const settings = {
+      className: "center",
+      centerMode: true,
+      infinite: true,
+      centerPadding: "60px",
+      slidesToShow: 3,
+      speed: 500
+    };
+
     if(this.state.loading == false){
       return(
       <div className="App-header">
@@ -64,8 +77,10 @@ class SERIES_ALL extends React.Component {
     if(this.state.loading){
       return(
         <div className="series_all_outer">
+          <Slider {...settings}>
           {this.state.data.data.map((Item) => {
               return (
+
                 <div className="series_all_inner">
                   <div className="DetailToBtn"
                  onClick={() => {this.handleClickOpen()}}
@@ -73,8 +88,10 @@ class SERIES_ALL extends React.Component {
                   <img src={ Item.seriesImage } />
                   <p>{Item.title}</p>
                 </div>
+
               );
             })}
+            </Slider >
             {modal}
         </div>
       );

@@ -4,19 +4,10 @@ img {
 
 .series_all_outer {
   width:100%;
-  display:-webkit-box;
-  display:-webkit-flex;
-  display:-ms-flexbox;
-  display:flex;
-  -webkit-box-pack:justify;
-  -webkit-justify-content:space-between;
-  -ms-flex-pack:justify;
-  justify-content:space-between;
 
 }
 
 .series_all_inner {
-  width:20%;
   border:1px solid red;
   position: relative;
 }

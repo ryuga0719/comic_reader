@@ -15,7 +15,7 @@ class BOOK extends React.Component {
     return fetch('https://wfc2-image-api-259809.appspot.com/api/books/D2rzfW7j/')
       .then((response) => response.json())
       .then((responseJson) => {
-        //console.log(responseJson);
+        console.log(responseJson);
         this.setState({
           loading: true,
           data: responseJson,
