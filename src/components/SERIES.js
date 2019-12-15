@@ -61,10 +61,12 @@ class SERIES extends React.Component {
 	   }
 
      const first = "はじめから読む";
+     const read = "読む";
 
     if(this.state.loading){
       return(
         <div className="series_outer">
+          <div className="series_middle">
           <div className="series_inner">
             <div className="series_inner_l">
               <img src={ this.state.data.seriesImage }/>
@@ -79,20 +81,24 @@ class SERIES extends React.Component {
               >{first}</div>
             </div>
           </div>
+          </div>{/*series_middle*/}
 
           <div className="series_detail">
           {this.state.data.books.map((Item, i) => {
               return (
                 <div className="series_detail_inner">
+                  <div className="series_detail_inner_l">
+                    <div className="series_dewtail_inner_img">
+                      <LazyLoad height="140px" once>
+                        <img src={ Item.image } />
+                      </LazyLoad>
+                    </div>
+                    <p>{Item.title}</p>
+                  </div>
+
                   <div className="BookToBtn"
                     onClick={() => {this.handleClickOpen(i)}}
-                  ></div>
-                  <div className="series_dewtail_inner_img">
-                    <LazyLoad height="140px" once>
-                      <img src={ Item.image } />
-                    </LazyLoad>
-                  </div>
-                  <p>{Item.title}</p>
+                  >{read}</div>
                 </div>
               );
             })}

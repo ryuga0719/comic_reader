@@ -61,7 +61,7 @@ class SERIES_ALL extends React.Component {
 	   modal = (
 		     <div className="modal_1">
          <AppBar />
-          <div className="btn_div">
+          <div className="btn_div bg_color">
             <button
             className='modal-close-btn'
             onClick={() => this.handleClickClose()}
