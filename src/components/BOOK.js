@@ -12,7 +12,7 @@ class BOOK extends React.Component {
   }
 
   componentDidMount(){
-    return fetch('https://wfc2-image-api-259809.appspot.com/api/books/D2rzfW7j/')
+    return fetch(`https://wfc2-image-api-259809.appspot.com/api/books/${this.props.bookid}/`)
       .then((response) => response.json())
       .then((responseJson) => {
         console.log(responseJson);
@@ -41,7 +41,7 @@ class BOOK extends React.Component {
           {this.state.data.imageData.map((Item) => {
               return (
                 <div className="book_inner">
-                  <LazyLoad height="500" once>
+                  <LazyLoad height="50px" once>
                     <img src={ Item.imageUrl } />
                   </LazyLoad>
                 </div>

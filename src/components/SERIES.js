@@ -1,5 +1,6 @@
 import React from 'react';
 import BOOK from './BOOK';
+import LazyLoad from 'react-lazyload';
 
 class SERIES extends React.Component {
   constructor(props) {
@@ -7,7 +8,7 @@ class SERIES extends React.Component {
     this.state={
       loading: false,
       data: '',
-      BookOpen:false
+      currentBookIndex:undefined
 
     };
   }
@@ -27,21 +28,23 @@ class SERIES extends React.Component {
       });
   }
 
-  handleClickOpen() {
-   this.setState({BookOpen: true});
+  handleClickOpen(i) {
+   this.setState({currentBookIndex: i});
   }
 
   handleClickClose() {
-   this.setState({BookOpen: false});
+   this.setState({currentBookIndex:undefined});
   }
+
+
 
   render() {
     let modal;
-	  if(this.state.BookOpen){
+	  if(this.state.currentBookIndex != null){
 	   modal = (
 		     <div className="modal_2">
             <div className="guide">
-              <p>スクロール</p>
+              <p>Scroll</p>
               <i className="material-icons">arrow_downward</i>
             </div>
             <button
@@ -50,10 +53,15 @@ class SERIES extends React.Component {
             >
               <i className="material-icons close">close</i>
             </button>
-            <BOOK />
+            <BOOK
+              bookid={this.state.data.books[this.state.currentBookIndex].id}
+            />
 		     </div>
 	   );
 	   }
+
+     const first = "はじめから読む";
+
     if(this.state.loading){
       return(
         <div className="series_outer">
@@ -63,24 +71,26 @@ class SERIES extends React.Component {
             </div>
             <div className="series_inner_r">
               <p className="series_title">{ this.state.data.title }</p>
-              <p className="series_author"><span>author</span>{ this.state.data.author }</p>
-              <p className="series_publisher"><span>publisher</span>{ this.state.data.publisher }</p>
+              <p className="series_author">{ this.state.data.author }</p>
+              <p className="series_publisher">{ this.state.data.publisher }</p>
               <p className="series_description">{ this.state.data.description }</p>
               <div className="startBtn"
-                    onClick={() => {this.handleClickOpen()}}
-              >read from first</div>
+                    onClick={() => {this.handleClickOpen(0)}}
+              >{first}</div>
             </div>
           </div>
 
           <div className="series_detail">
-          {this.state.data.books.map((Item) => {
+          {this.state.data.books.map((Item, i) => {
               return (
                 <div className="series_detail_inner">
                   <div className="BookToBtn"
-                    onClick={() => {this.handleClickOpen()}}
+                    onClick={() => {this.handleClickOpen(i)}}
                   ></div>
                   <div className="series_dewtail_inner_img">
-                    <img src={ Item.image } />
+                    <LazyLoad height="140px" once>
+                      <img src={ Item.image } />
+                    </LazyLoad>
                   </div>
                   <p>{Item.title}</p>
                 </div>

@@ -11,7 +11,6 @@ class SERIES_ALL extends React.Component {
     this.state={
       loading: false,
       data: '',
-      isModalOpen: false,
       currentIndex: undefined
     };
   }
@@ -58,7 +57,7 @@ class SERIES_ALL extends React.Component {
       );
     }
     let modal;
-	  if(!!this.state.currentIndex){
+	  if(this.state.currentIndex != null){
 	   modal = (
 		     <div className="modal_1">
          <AppBar />
@@ -82,7 +81,6 @@ class SERIES_ALL extends React.Component {
           <Slider {...settings}>
           {this.state.data.data.map((Item, i) => {
               return (
-
                 <div className="series_all_inner" >
                   <div className="inner_container" onClick={() => {this.handleClickOpen(i)}}>
                     <div className="inner_container_img">
