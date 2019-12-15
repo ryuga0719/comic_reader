@@ -1,6 +1,7 @@
 import React from 'react';
 import BOOK from './BOOK';
 import LazyLoad from 'react-lazyload';
+import Modal from './modal.js';
 
 class SERIES extends React.Component {
   constructor(props) {
@@ -8,7 +9,8 @@ class SERIES extends React.Component {
     this.state={
       loading: false,
       data: '',
-      currentBookIndex:undefined
+      currentBookIndex:undefined,
+      modalOpen:false
 
     };
   }
@@ -29,24 +31,40 @@ class SERIES extends React.Component {
   }
 
   handleClickOpen(i) {
-   this.setState({currentBookIndex: i});
+   this.setState({currentBookIndex: i,
+   modalOpen:true});
   }
 
   handleClickClose() {
    this.setState({currentBookIndex:undefined});
   }
 
+  handleClickModalClose(){
+    this.setState({modalOpen:false});
+  }
+
 
 
   render() {
     let modal;
-	  if(this.state.currentBookIndex != null){
+    const message = "上にスクロールすると閲覧できます。";
+    const close ="閉じる";
+	  if(this.state.currentBookIndex != null && this.state.modalOpen){
 	   modal = (
 		     <div className="modal_2">
-            <div className="guide">
-              <p>Scroll</p>
-              <i className="material-icons">arrow_downward</i>
+
+            <div id="caution_modal">
+              <div className="caution_modal_inner">
+                <p>{message}</p>
+                <div className="modal_close_btn">
+                  <button onClick={() => this.handleClickModalClose()}>
+                    {close}
+                  </button>
+                </div>
+              </div>
             </div>
+
+
             <button
           className='modal-close-btn abs'
           onClick={() => this.handleClickClose()}
@@ -58,10 +76,27 @@ class SERIES extends React.Component {
             />
 		     </div>
 	   );
-	   }
+   }else if (this.state.currentBookIndex != null ) {
+     modal = (
+         <div className="modal_2">
+
+            <button
+          className='modal-close-btn abs'
+          onClick={() => this.handleClickClose()}
+            >
+              <i className="material-icons close">close</i>
+            </button>
+            <BOOK
+              bookid={this.state.data.books[this.state.currentBookIndex].id}
+            />
+         </div>
+     );
+   }
 
      const first = "はじめから読む";
      const read = "読む";
+     const author = "作者";
+     const pub = "出版社";
 
     if(this.state.loading){
       return(
@@ -73,8 +108,8 @@ class SERIES extends React.Component {
             </div>
             <div className="series_inner_r">
               <p className="series_title">{ this.state.data.title }</p>
-              <p className="series_author">{ this.state.data.author }</p>
-              <p className="series_publisher">{ this.state.data.publisher }</p>
+              <p className="series_author"><span>{author}</span>{ this.state.data.author }</p>
+              <p className="series_publisher"><span>{pub}</span>{ this.state.data.publisher }</p>
               <p className="series_description">{ this.state.data.description }</p>
               <div className="startBtn"
                     onClick={() => {this.handleClickOpen(0)}}

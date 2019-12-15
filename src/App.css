@@ -80,7 +80,7 @@ img {
   width: 100%;
   margin:0 auto;
   background-color: #fff;
-  padding-bottom: 80px;
+  padding-bottom: 160px;
 }
 
 .modal_1 {
@@ -143,10 +143,12 @@ img {
 
 .series_author span {
   padding-right: 10px;
+  opacity:.5;
 }
 
 .series_publisher span {
   padding-right: 10px;
+  opacity:.5;
 }
 
 .series_description {
@@ -173,7 +175,7 @@ img {
 }
 
 .series_detail {
-  width: 80%;
+  width: 60%;
   margin:0 auto;
 }
 
@@ -356,7 +358,7 @@ justify-content:space-between;
 
 .slick-current {
   opacity:1 !important;
-  width: 500px !important;
+  transition: .3s;
 }
 
 .slick-slide {
@@ -367,4 +369,55 @@ justify-content:space-between;
 .slick-slide:hover {
   opacity:1;
   transition: .3s;
+}
+
+#caution_modal {
+  width: 100%;
+  height:auto;
+  position: absolute;
+  top:0;
+  right:0;
+  left:0;
+  bottom:0;
+  background: rgba(0,0,0,0.5);
+  z-index: 15;
+  width: 100%;
+  display:-webkit-box;
+display:-webkit-flex;
+display:-ms-flexbox;
+display:flex;
+-webkit-box-align:center;
+-webkit-align-items:center;
+-ms-flex-align:center;
+align-items:center;
+-webkit-box-pack:center;
+-webkit-justify-content:center;
+-ms-flex-pack:center;
+justify-content:center;
+}
+
+.caution_modal_inner {
+  width:500px;
+  background-color: rgba(0,0,0,0.7);
+  position: relative;
+  padding:70px 0 30px;
+  border-radius: 10px;
+  border:1px solid silver;
+}
+
+.caution_modal_inner p {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 30px;
+}
+
+.modal_close_btn {
+  text-align: center;
+}
+
+.modal_close_btn button {
+  font-size: 20px;
+  padding:5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
 }

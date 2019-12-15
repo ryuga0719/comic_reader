@@ -87,7 +87,7 @@ class SERIES_ALL extends React.Component {
                       <img src={ Item.seriesImage } />
                     </div>
                     <p className="series_all_title">{Item.title}</p>
-                    {/*<p className="series_all_description">{Item.description}</p>*/}
+                    <p className="series_all_description">{Item.description}</p>
                   </div>
                 </div>
 
