@@ -299,6 +299,7 @@ img {
 
 .slick-prev,.slick-next {
   z-index: 4 !important;
+  top:40% !important;
 }
 
 .slick-prev {
@@ -310,6 +311,32 @@ img {
 }
 
 .slick-prev::before,.slick-next::before {
-  font-size: 50px !important;
-  color:red !important;
+  font-size: 70px !important;
+  color:#FCDE4C !important;
+  opacity:1 !important;
+}
+
+.slick-next:before {
+  content: '⇀' !important;
+  font-weight: lighter !important;
+}
+
+.slick-prev:before {
+  content: '↼' !important;
+  font-weight: lighter !important;
+}
+
+.slick-current {
+  opacity:1 !important;
+  width: 500px !important;
+}
+
+.slick-slide {
+  opacity:.6;
+  transition: .3s;
+}
+
+.slick-slide:hover {
+  opacity:1;
+  transition: .3s;
 }
