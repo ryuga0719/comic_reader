@@ -11,8 +11,8 @@ class SERIES_ALL extends React.Component {
     this.state={
       loading: false,
       data: '',
-      isModalOpen: false
-
+      isModalOpen: false,
+      currentIndex: undefined
     };
   }
 
@@ -31,12 +31,12 @@ class SERIES_ALL extends React.Component {
       });
   }
 
-  handleClickOpen() {
-   this.setState({isModalOpen: true});
+  handleClickOpen(i) {
+   this.setState({currentIndex: i});
   }
 
   handleClickClose() {
-   this.setState({isModalOpen: false});
+   this.setState({currentIndex: undefined});
   }
 
 
@@ -49,7 +49,6 @@ class SERIES_ALL extends React.Component {
       centerPadding: "40px",
       slidesToShow: 3,
       speed: 500 ,
-      dots:true ,
     };
 
     if(this.state.loading == false){
@@ -59,7 +58,7 @@ class SERIES_ALL extends React.Component {
       );
     }
     let modal;
-	  if(this.state.isModalOpen){
+	  if(!!this.state.currentIndex){
 	   modal = (
 		     <div className="modal_1">
          <AppBar />
@@ -71,7 +70,9 @@ class SERIES_ALL extends React.Component {
               <i className="material-icons back">arrow_back</i>
               </button>
           </div>
-          <SERIES />
+          <SERIES
+            id={this.state.data.data[this.state.currentIndex].seriesId}
+          />
 		     </div>
 	   );
 	   }
@@ -79,13 +80,17 @@ class SERIES_ALL extends React.Component {
       return(
         <div className="series_all_outer">
           <Slider {...settings}>
-          {this.state.data.data.map((Item) => {
+          {this.state.data.data.map((Item, i) => {
               return (
 
-                <div className="series_all_inner" onClick={() => {this.handleClickOpen()}}>
-                  <img src={ Item.seriesImage } />
-                  <p className="series_all_title">{Item.title}</p>
-                  <p className="series_all_description">{Item.description}</p>
+                <div className="series_all_inner" >
+                  <div className="inner_container" onClick={() => {this.handleClickOpen(i)}}>
+                    <div className="inner_container_img">
+                      <img src={ Item.seriesImage } />
+                    </div>
+                    <p className="series_all_title">{Item.title}</p>
+                    {/*<p className="series_all_description">{Item.description}</p>*/}
+                  </div>
                 </div>
 
               );

@@ -13,10 +13,10 @@ class SERIES extends React.Component {
   }
 
   componentDidMount(){
-    return fetch('https://wfc2-image-api-259809.appspot.com/api/series/eE6BFpfm/')
+    return fetch(`https://wfc2-image-api-259809.appspot.com/api/series/${this.props.id}/`)
       .then((response) => response.json())
       .then((responseJson) => {
-        //console.log(responseJson);
+        console.log(responseJson);
         this.setState({
           loading: true,
           data: responseJson,
@@ -41,7 +41,7 @@ class SERIES extends React.Component {
 	   modal = (
 		     <div className="modal_2">
             <div className="guide">
-              <p>Scroll</p>
+              <p>スクロール</p>
               <i className="material-icons">arrow_downward</i>
             </div>
             <button
